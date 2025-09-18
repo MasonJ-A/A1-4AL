@@ -111,3 +111,4 @@ ax.set_title("Cantril Ladder Score vs GDP per capita of countries (2018)")
 
 #show the plot
 plt.show()
+print((np.sum((Y-Y_predict)**2)/len(Y)))

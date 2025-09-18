@@ -91,6 +91,8 @@ ax.set_title("Cantril Ladder Score vs GDP per capita of countries (2018)")
 
 #show the plot
 plt.show()
+'''
 minMSE = ((Y-np.array(Y_predicts[0]))**2).mean()
 for i in range(len(Y_predicts)):
      print(np.square(np.subtract(np.array(Y_predicts[i]),Y)).mean())
+'''

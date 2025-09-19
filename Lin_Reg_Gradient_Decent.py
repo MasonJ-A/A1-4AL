@@ -58,7 +58,7 @@ epochs = [10,50,100,500,1000]
 rates = [0.0001,0.002,0.01,0.0005,0.4]
 betas=[]
 Y_predicts = []
-for i in range(1):
+for i in range(5):
     betas.append(GD.train(rates[i],epochs[i] ,X,Y))
     Y_predicts.append(GD.predict(X,betas[i]))
 
@@ -91,8 +91,7 @@ ax.set_title("Cantril Ladder Score vs GDP per capita of countries (2018)")
 
 #show the plot
 plt.show()
-'''
+
 minMSE = ((Y-np.array(Y_predicts[0]))**2).mean()
 for i in range(len(Y_predicts)):
      print(np.square(np.subtract(np.array(Y_predicts[i]),Y)).mean())
-'''

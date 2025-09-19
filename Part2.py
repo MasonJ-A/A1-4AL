@@ -33,4 +33,23 @@ fig, ax= plt.subplots()
 #all weights behave similarly I'm probably just gonna use the whole weight
 plt.show()
 
+class polynomial_regression():
+    def  __init__(self, x_1:list, x_2:list, x_3:list, y_:list) -> None:
+        self.input = np.array(y_)
+        self.target = np.array([x_1,x_2,x_3])
+        self.n = len(self.target)
+        self.beta = np.array([[0],[0]])
 
+    def preprocess(self,):
+        hmean = []
+        hstd = []
+        x_train = []
+        for i in self.input:
+            hmean.append(np.mean(self.input[i]))
+            hstd.append(np.mean)
+        
+        
+        
+        np.std(self.input)
+        
+        (self.input - hmean)/hstd

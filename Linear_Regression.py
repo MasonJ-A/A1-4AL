@@ -84,7 +84,7 @@ beta = lr_ols.train(X,Y)
 
 # use the computed beta for prediction
 Y_predict = lr_ols.predict(X,beta)
-
+print(Y_predict)
 # below code displays the predicted values
 
 # access the 1st column (the 0th column is all 1's)

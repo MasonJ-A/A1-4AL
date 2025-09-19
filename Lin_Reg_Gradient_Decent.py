@@ -16,8 +16,8 @@ for row in df.iterrows():
 class gradient_decent():
     
     def  __init__(self, x_:list, y_:list) -> None:
-        self.input = np.array(y_)
-        self.target = np.array(x_)
+        self.input = np.array(x_)
+        self.target = np.array(y_)
         self.n = len(self.target)
         self.beta = np.array([[0],[0]])
     def preprocess(self,):

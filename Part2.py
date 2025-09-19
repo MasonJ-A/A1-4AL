@@ -31,25 +31,50 @@ fig, ax= plt.subplots()
 #ax.scatter(age,viscera_weight)#slightly polynomial, kinda like a scatter shot that curves upwards
 #ax.scatter(age, shell_weight)#slightly polynomial, kinda like a scatter shot that curves upwards
 #all weights behave similarly I'm probably just gonna use the whole weight
-plt.show()
+#plt.show()
 
-class polynomial_regression():
+class linear_regression2():
     def  __init__(self, x_1:list, x_2:list, x_3:list, y_:list) -> None:
-        self.input = np.array(y_)
-        self.target = np.array([x_1,x_2,x_3])
+        self.target = np.array(y_)
+        self.input = np.array([np.array(x_1),np.array(x_2),np.array(x_3)])
         self.n = len(self.target)
-        self.beta = np.array([[0],[0]])
+        self.beta = np.array([[0],[0],[0],[0]])
 
     def preprocess(self,):
         hmean = []
         hstd = []
         x_train = []
+        X = []
         for i in self.input:
-            hmean.append(np.mean(self.input[i]))
-            hstd.append(np.mean)
+            hmean.append(np.mean(i))
+            hstd.append(np.std(i))
+            x_train.append((i-np.mean(i))/np.std(i))
         
+        X = (np.column_stack((np.ones(len(x_train[0])),x_train[0],x_train[1],x_train[2])))
         
-        
-        np.std(self.input)
-        
-        (self.input - hmean)/hstd
+        gmean = np.mean(self.target)
+        gstd = np.std(self.target)
+        y_train = (self.target - gmean)/gstd
+        Y = (np.column_stack(y_train)).T
+        return X, Y
+    
+    def predict(self, X_test,beta):
+        #predict using beta
+
+        Y_hat = X_test*beta.T
+        return np.sum(Y_hat,axis=1)
+
+    def train(self,r,epochs,X,Y):
+       
+        for i in range(epochs):
+            gradient = -2/self.n*X.T.dot(Y-X.dot(self.beta))
+            self.beta = self.beta - r*gradient
+
+        return self.beta
+    
+l_reg = linear_regression2(length,height,whole_weight,age)
+
+X,Y = l_reg.preprocess()
+
+beta = l_reg.train(0.1,100,X,Y)
+print(beta)
